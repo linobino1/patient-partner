@@ -1,15 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
+  --font-sans: Arial, sans-serif;
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+  /* --color-blue-50: oklch(95.73% 0.02 289.15);
+  --color-blue-100: oklch(91.56% 0.039 285.63);
+  --color-blue-200: oklch(82.36% 0.085 285.13);
+  --color-blue-300: oklch(74.13% 0.127 282.86);
+  --color-blue-400: oklch(64.94% 0.177 280.63);
+  --color-blue-500: oklch(56.92% 0.22 277.12);
+  --color-blue-600: oklch(48.39% 0.263 271.31);
+  --color-blue-700: oklch(39.81% 0.248 268);
+  --color-blue-800: oklch(30.46% 0.19 267.98);
+  --color-blue-900: oklch(20.35% 0.127 267.92);
+  --color-blue-950: oklch(15.99% 0.1 267.26); */
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+  --color-blue-50: oklch(96.69% 0.016 282.35);
+  --color-blue-100: oklch(92.48% 0.037 280.64);
+  --color-blue-200: oklch(85.77% 0.071 279.54);
+  --color-blue-300: oklch(78.14% 0.112 277.33);
+  --color-blue-400: oklch(71.45% 0.149 275.24);
+  --color-blue-500: oklch(63.95% 0.191 271.67);
+  --color-blue-600: oklch(57.54% 0.23 267.03);
+  --color-blue-700: oklch(49.85% 0.242 262.8);
+  --color-blue-800: oklch(42.75% 0.208 262.82);
+  --color-blue-900: oklch(34.72% 0.168 262.77);
+  --color-blue-950: oklch(24.09% 0.116 262.5);
 }
