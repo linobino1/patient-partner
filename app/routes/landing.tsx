@@ -1,17 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import type { Route } from "./+types/landing";
 import { ExternalLink } from "~/components/svg/ExternalLink";
 import { ToggleMuteButton } from "~/components/ToggleMuteButton";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "🩸🩸🩸 Patient Partner" },
-    {
-      name: "description",
-      content: `Patient Partner - "AI Agent Orange" is out since July 4th 2025 on Vinyl and YouTube`,
-    },
-  ];
-}
 
 export default function Home() {
   const [isMuted, setIsMuted] = useState({
@@ -34,9 +23,46 @@ export default function Home() {
     }
   }, [isMuted]);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState<
+    "theDream" | "aiAgentOrange"
+  >("theDream");
+
+  const handleScroll = () => {
+    const sections = containerRef.current?.querySelectorAll("section");
+    sections?.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 10 && rect.bottom >= 0) {
+        setActiveSection(section.id as "theDream" | "aiAgentOrange");
+      }
+    });
+  };
+
+  useEffect(() => {
+    containerRef.current?.addEventListener("scroll", handleScroll);
+    return () => {
+      containerRef.current?.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="h-screen snap-y snap-mandatory overflow-scroll">
-      <section className="h-screen snap-start relative w-screen flex flex-col">
+    <div
+      ref={containerRef}
+      className="h-screen snap-y snap-mandatory overflow-scroll"
+    >
+      <title>
+        {`${
+          activeSection === "theDream" ? "🌱 🌱 🌱" : "🩸🩸🩸"
+        } Patient Partner`}
+      </title>
+      <meta
+        name="description"
+        content="Patient Partner - 'AI Agent Orange' is out since July 4th 2025 on Vinyl and YouTube"
+      />
+      <section
+        id="theDream"
+        className="h-screen snap-start relative w-screen flex flex-col"
+      >
         <div className="-z-10 absolute left-0 top-0 h-full w-full opacity-100">
           <video
             src="/the_dream.mp4"
@@ -70,7 +96,11 @@ export default function Home() {
           </p>
 
           <span className="tracking-[0.1em] text-neutral-100 font-bold italic md:text-lg">
-            <p className="mt-16">Digital Single</p>
+            <p className="mt-16">
+              12" Vinyl
+              <br />&<br />
+              Digital Single
+            </p>
             <p className="my-12 font-normal">official release Oct 3 ’25</p>
 
             <p className="mt-8 font-normal">consume here:</p>
@@ -88,7 +118,10 @@ export default function Home() {
           </span>
         </div>
       </section>
-      <section className="h-screen snap-start relative w-screen overflow-hidden flex flex-col">
+      <section
+        id="aiAgentOrange"
+        className="h-screen snap-start relative w-screen overflow-hidden flex flex-col"
+      >
         <div className="-z-10 absolute left-0 top-0 h-full w-full opacity-100">
           <video
             src="/ai_agent_orange.mp4"
