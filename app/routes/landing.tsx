@@ -57,7 +57,7 @@ export default function Home() {
       </title>
       <meta
         name="description"
-        content="Patient Partner - 'AI Agent Orange' is out since July 4th 2025 on Vinyl and YouTube"
+        content="time is now. don’t let it pass.. don’t you fear what if and what it was."
       />
       <section
         id="theDream"
